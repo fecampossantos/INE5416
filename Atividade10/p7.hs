@@ -5,9 +5,14 @@ a fun¸c˜ao putChar. N˜ao crie nenhuma fun¸c˜ao auxiliar e nem altere os par
 uma vers˜ao usando >>= e outra usando a nota¸c˜ao do
 -}
 
+-- escreva :: String -> Int -> IO ()
+-- escreva (a:b) 1 = putChar a
+-- escreva (a:b) n = putChar a >> escreva b (n-1)
+
 escreva :: String -> Int -> IO ()
 escreva (a:b) 1 = putChar a
-escreva (a:b) n = putChar a >> escreva b (n-1)
+escreva (a:b) n = putChar a >>=
+                    (\c -> escreva b (n-1))
 
 escrevaDo :: String -> Int -> IO ()
 escrevaDo (a:b) 1 = putChar a
