@@ -1,0 +1,17 @@
+6. Pesquise sobre as classes Applicative e Functor. O que s˜ao? Para que servem? Fa¸ca um pequeno exemplo
+utilizando cada uma delas.
+
+Functor -> dado um tipo f, f pertence à classe functor se contem a função fmap, que dados quaisquer tipos A e B
+permite que seja aplicado qualquer função A -> B transformando f a em f b sem que seja necessário alterar f.
+
+Applicative -> meio termo entre Monad e Functor
+
+
+import Data.Char  
+import Data.List  
+  
+main = do line <- fmap (intersperse '-' . reverse . map toUpper) getLine  
+          putStrLn line
+
+
+pure (+) <*> Just 3 <*> Just 5   -> pega o valor da função Just 3 e da função Just 5 e passa eles como parametro para a função retornada de pure (+) (que é (+) )

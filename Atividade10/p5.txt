@@ -1,0 +1,20 @@
+5. Pesquise sobre a classe Monad do Haskell. Que outras opera¸c˜oes, al´em de return e >>= existem nela?
+Qual a diferen¸ca entre >> e >>=?
+
+Além do return e >>= a classe Monad tem a operação >>
+
+>>=  ---> Serve para chamar uma função e colocar o retorno dela em uma próxima função.
+Exemplo: digamos que temos uma função getPar() que retorna um número par aleatório e uma função dobra(x) que
+dobra o número x passado pra ela.
+
+pseudocodigo:                               Haskell:
+x = getPar()                            | getPar() >>= (\n -> dobra())
+dobra(x)                                | -- n sera recebido de getPar() e passado para dobra()
+
+>>   ---> Serve apenas para sequenciar duas chamadas, descartando o retorno da primeira
+Exemplo: digamos que temos uma função setPar() que seta uma variável global para par aleatório e uma função
+dobra() que dobra a variável global.
+
+pseudocodigo:                               Haskell:
+setPar()                                | setPar() >> dobra()
+dobra()                                 |
