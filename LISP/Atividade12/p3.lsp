@@ -1,6 +1,7 @@
 (defun add (i lista)
     (if (null lista)
         (cons i ())
+        
         (if (<= i (car lista))
             (cons i lista)
             (cons (car lista) (add i (cdr lista)))
@@ -16,14 +17,14 @@
 )
 
 (defun menor (lista)
-    (if null lista)
+    (if (null lista)
         0
-        (car (ordenacao (lista)))
-
+        (car (ordenacao lista))
     )
 )
+
 (defun main()
-    (write-line (write-to-string (menor (list 1 2 3 4))))
+    (write (menor (list 1 5 7 6)))
 )
 
 (main)
