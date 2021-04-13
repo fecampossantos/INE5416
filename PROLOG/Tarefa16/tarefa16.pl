@@ -114,3 +114,18 @@ lista L2. Esta fun¸c˜ao deve remover da lista os N primeiros elementos forneci
 */
 apagar(0,L1,L1).
 apagar(N, [H|T], L2) :- N1 is N-1, apagar(N1,T,L2).
+
+/*
+dividir(L1,L2,L3), a qual recebe uma lista como entrada L1 e deve divid´ı-la em duas
+listas L2 e L3 com a mesma quantidade de elementos (exceto quando L1 tiver quantidade ´ımpar). Por
+exemplo, dividir([1,2,3,4,5],L2,L3) deve retornar L2 = [1, 3, 5], L3 = [2, 4].
+*/
+
+dividir([],[],[]).
+dividir(L1,L2,L3) :- comprimento(L1,C), T is C/2, dividir(L1,L2,L3,T).
+
+dividir(L1,L2,L3,C) :- C =< 0, L3 = L1.
+dividir([H|T],[H1|T1],L3,C) :- C1 is C-1, dividir(T, [H,H1|T1],L3,C1).
+
+adiciona(X,L) :- [X|L].
+adiciona(X,[]) :- [X].
