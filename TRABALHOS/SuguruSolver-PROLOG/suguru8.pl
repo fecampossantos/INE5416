@@ -1,5 +1,8 @@
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
    Suguru 8x8 CLP(FD) formulation.
+   
+   Felipe de Campos Santos - 17200441
+   Isac de Souza Campos - 17200449
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 :- use_module(library(clpfd)).
@@ -15,6 +18,7 @@ suguru([
             [HA, HB, HC, HD, HE, HF, HG, HH]
         ]) :-
 
+        % Defining areas
         Area0 = [AA,AB,AC,BA],
         Area1 = [AD,BD,CC,CD,DD],
         Area2 = [AE,AF,BE,BF,CE],
@@ -29,6 +33,7 @@ suguru([
         Area11 = [GD,HC,HD,HE,HF],
         Area12 = [FF,GF,GG,HG,HH],
 
+        % Defining the values that the cells in AreaX can be
         Area0 ins 1..4,
         Area1 ins 1..5,
         Area2 ins 1..5,
@@ -43,7 +48,7 @@ suguru([
         Area11 ins 1..5,
         Area12 ins 1..5,
 
-        %the cells around eachother should be different
+        % The cells around eachother should be different
 
         % ROWS
         all_different([AA,AB]),
@@ -110,7 +115,7 @@ suguru([
         all_different([HF,HG]),
         all_different([HG,HH]),
 
-        %COLUMNS
+        % COLUMNS
         all_different([AA,BA]),
         all_different([BA,CA]),
         all_different([CA,DA]),
@@ -175,7 +180,7 @@ suguru([
         all_different([FH,GH]),
         all_different([GH,HH]),
 
-        %DIAGONALS BELOW
+        % DIAGONALS BELOW
         all_different([AA,BB]),
         all_different([AB,BA]),
         all_different([AB,BC]),
@@ -285,7 +290,7 @@ suguru([
 
 
         
-        %the cells in the areas should be different too
+        % The cells in the areas should be different too
         all_different(Area0),
         all_different(Area1),
         all_different(Area2),
@@ -301,7 +306,7 @@ suguru([
         all_different(Area12),
 
 
-        %evaluate the cells
+        % Evaluate the cells (generate values for each variable that suits the rules)
         label(Area0),
         label(Area1),
         label(Area2),
@@ -315,8 +320,6 @@ suguru([
         label(Area10),
         label(Area11),
         label(Area12).
-
-        %label(Table).
 
 /*
 https://www.janko.at/Raetsel/Suguru/011.a.htm

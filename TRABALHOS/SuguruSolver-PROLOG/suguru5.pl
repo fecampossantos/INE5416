@@ -1,5 +1,8 @@
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
    Suguru 5x5 CLP(FD) formulation.
+   
+   Felipe de Campos Santos - 17200441
+   Isac de Souza Campos - 17200449
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 :- use_module(library(clpfd)).
@@ -12,9 +15,7 @@ suguru([
             [EA, EB, EC, ED, EE]
         ]) :-
 
-        /*
-            
-        */
+        % Defining areas
         Area0 = [AA,AB,AC,BA],
         Area1 = [AD,AE,BE,CE,DE],
         Area2 = [BB,BC,CA,CB,DA],
@@ -22,15 +23,15 @@ suguru([
         Area4 = [DD,EA,EB,EC,ED],
         Area5 = [EE],
 
+        % Defining the values that the cells in AreaX can be
         Area0 ins 1..4,
         Area1 ins 1..5,
         Area2 ins 1..5,
         Area3 ins 1..5,
         Area4 ins 1..5,
-        %Area5 ins 1..1,
         EE #= 1,
 
-        %the cells around eachother should be different
+        % The cells around eachother should be different
 
         % ROWS
         all_different([AA,AB]),
@@ -58,7 +59,7 @@ suguru([
         all_different([EC,ED]),
         all_different([ED,EE]),
 
-        %COLUMNS
+        % COLUMNS
         all_different([AA,BA]),
         all_different([BA,CA]),
         all_different([CA,DA]),
@@ -84,7 +85,7 @@ suguru([
         all_different([CE,DE]),
         all_different([DE,EE]),
 
-        %DIAGONALS BELOW
+        % DIAGONALS BELOW
         all_different([AA,BB]),
         all_different([AB,BA]),
         all_different([AB,BC]),
@@ -120,7 +121,7 @@ suguru([
 
 
         
-        %the cells in the areas should be different too
+        % The cells in the areas should be different too
         all_different(Area0),
         all_different(Area1),
         all_different(Area2),
@@ -129,7 +130,7 @@ suguru([
         all_different(Area5),
 
 
-        %evaluate the cells
+        % Evaluate the cells (generate values for each variable that suits the rules)
         label(Area0),
         label(Area1),
         label(Area2),
@@ -137,8 +138,7 @@ suguru([
         label(Area4),
         label(Area5).
 
-        %label(Table).
-
+% example table
 problem1(1,T) :- 
     T = [[1,_,_,5,_],
         [_,_,_,_,_],
@@ -148,7 +148,7 @@ problem1(1,T) :-
 
 /*
 
-?- problem1(1,T), suguru(T), maplist(labeling([ff]), T), maplist(writeln, T).
+?- problem1(1,T), suguru(T), maplist(writeln, T).
 
 [1,3,2,5,1]
 [4,5,4,3,2]
