@@ -36,6 +36,9 @@ Tables 4|   White  | Ronaldo |  Lucia  |    4   |  Farfalle | Argentine|
 Tables 5|   Green  |  Caue   |  Isabel |    7   |  Ravioli  | Chilean  |
 ========|==========|=========|=========|========|===========|==========|
 
+presentation:
+https://youtu.be/GJvkOWCzq-w
+
 --------------------------------------------------------------
 http://bennycheung.github.io/solving-puzzles-using-clp
 https://www.metalevel.at/prolog/puzzles
